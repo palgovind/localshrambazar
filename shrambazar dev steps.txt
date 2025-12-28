@@ -20,4 +20,13 @@ uniqueConstraints: Enforces unique constraints on one or more columns
    ->Coming to WorkerController, since we need worker repository create a repository class
 3.Successfully, created worker table by JPA, controller routes to workers;
 4. Now when worker and service provider is clicked, it should list the workers existing in the database in the new html file.
- 
+4:54 PM 12/25/2025
+1. Convert local project into github project and create a bridge named origin
+   steps: a. Check if there alread is a .git hidden folder(cmd:dir /a:h), if not "git init"
+          b. Start adding files to the empty git folder created but check "git status" for untracked files .
+          c. git add . " Add the files" and the files are staged and tracked  yet not commited
+          d. Now  "git commit -m "Added files"
+          e. Now to push to remote, create a remote repository.
+          f.Create a bridge named origin between local project and remote repository by using "git remote add origin <link>"
+          g. Verify the bridge has been commited: git remote -v
+          h.Now push "git push origin main". 

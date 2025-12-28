@@ -1,6 +1,8 @@
 package com.cityinfo.shrambazar.controller;
 import com.cityinfo.shrambazar.repository.*;
 import com.cityinfo.shrambazar.model.*;
+import com.cityinfo.shrambazar.service.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
@@ -10,10 +12,18 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api")
+@RequiredArgsConstructor
 public class WorkerController{
 @Autowired
 private WorkerRepository repository;
-  // Find
+private final WorkerService workerService;
+public Worker postWorker(@RequestBody Worker worker){
+	
+	
+	return workerService.postWorker(worker);
+}
+   // Find
     @GetMapping("/workers")
     List<Worker> findAll() {
         return repository.findAll();
@@ -21,4 +31,5 @@ private WorkerRepository repository;
 	@CrossOrigin(origins = "http://localhost:5173")
 	@GetMapping("/home")
 	public String home(){return "spring_boot comes";}
+	
 }
