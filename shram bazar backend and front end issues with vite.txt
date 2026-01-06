@@ -1,0 +1,45 @@
+1.Action from vite for form submisson created the json object since vite has requested to
+stringify formdata.
+2. Since the /index returned index from backend without json data, now I am trying to
+save data into database using /worker. By doing this the backend compiled to error
+by saying that WorkerController does not have symbol method postWorker(Worker).So
+we should write or access this method anyhow.But now I have used List<>findAll instead of postWorker
+-->4 Header values returned
+[{"key":"Transfer-Encoding","value":"chunked"},
+{"key":"Allow","value":"POST"},{"key":"Content-Type","value":"application/json"},
+{"key":"Date","value":"Tue, 06 Jan 2026 08:59:40 GMT"}]
+-->Typical Mistake (What You Are Likely Doing)
+fetch("http://localhost:8080/api/data", {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ id: 1 })   // ❌ NOT ALLOWED for GET
+});
+
+
+This will always fail in the browser.
+-->Solution 2: Change the request to POST if you need a body
+
+If you must send JSON data, use POST instead of GET.
+
+Frontend
+fetch("http://localhost:8080/api/data", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ id: 1 })
+})
+  .then(res => res.json())
+  .then(data => console.log(data));
+
+Backend
+@PostMapping("/api/data")
+public ResponseEntity<String> postData(@RequestBody Map<String, Integer> payload) {
+    return ResponseEntity.ok("Received id: " + payload.get("id"));
+}
+
+
+✔ Valid HTTP
+✔ Works with JSON bodies

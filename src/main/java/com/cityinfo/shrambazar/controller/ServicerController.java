@@ -18,7 +18,8 @@ private ServicerRepository repository;
     List<Servicer> findAll() {
         return repository.findAll();
     }
-	@CrossOrigin(origins = "http://localhost:5173")
+	
+	//@CrossOrigin(origins = "http://localhost:5173")
 	@GetMapping("/serhome")
 	public String home(){return "spring_boot comes with service home";}
 }
