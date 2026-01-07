@@ -30,3 +30,20 @@ uniqueConstraints: Enforces unique constraints on one or more columns
           f.Create a bridge named origin between local project and remote repository by using "git remote add origin <link>"
           g. Verify the bridge has been commited: git remote -v
           h.Now push "git push origin main". 
+2. Create a branch to work on independently without affecting the main codebase
+     steps: a.Check which branch you are on "git branch"
+            b. Navigate to a particular branch "git checkout name"
+	    c. Create new branch "git checkout -b new-branch-name"
+	    d.To delete branch "git branch -d branch-name"
+	    e. Make changes in a branch:"git add ."-->"git status"-->"git commit -m 'Added feature1'-->"git push origin feature1"
+
+
+
+
+
+
+
+
+
+
+

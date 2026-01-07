@@ -11,6 +11,7 @@ import java.util.List;
 public interface WorkerRepository extends JpaRepository<Worker,Long>{
 
     public  Worker getWorkerById(Integer id);
+	
    // public List <Worker> getAllWorker();
    // public void deleteWorker(Long id);
 

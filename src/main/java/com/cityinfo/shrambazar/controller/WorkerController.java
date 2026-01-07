@@ -4,6 +4,7 @@ import com.cityinfo.shrambazar.model.*;
 import com.cityinfo.shrambazar.service.WorkerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Map;   
 
 @RestController
+@RequestMapping
 @CrossOrigin(origins = "http://localhost:5173")
 //@RequiredArgsConstructor
    public class WorkerController {
@@ -27,27 +29,25 @@ import java.util.Map;
 		this.workerRepository=workerRepository;
 		this.workerService = workerService;
 	}
-
-/*	@PostMapping("/index")
-	public String showAllWorkers(Model model) {
-		model.addAttribute("workers", workerService.getAllWorkers());
-		return "index";
-	}*/
-	
-	
-    @PostMapping("/worker")
-	public Worker saveWorker(@RequestBody Worker worker){
-	return workerRepository.save(worker);
+	@PostMapping
+	public ResponseEntity<Worker>createWorker(@RequestBody Worker worker){
+		Worker savedWorker=workerService.saveWorker(worker);
+		return ResponseEntity.status(HttpStatus.CREATED).body(savedWorker);		
 	}
-/*	 @GetMapping("/worker")
-	public Worker getWorkerById(@RequestBody Long id){
-		return repository.
+	@GetMapping
+	public ResponseEntity<List<Worker>>getAllWorkers(){
+		return ResponseEntity.ok(workerService.getAllWorkers());	
+	}
+
+   @GetMapping("/{id}")
+	public ResponseEntity<Worker> getWorkerById(@PathVariable  Long id){
+	       	return workerService.getWorkerById(id)
+			       .map(ResponseEntity::ok)
+				   .orElse(ResponseEntity.notFound().build());
 				
-	}*/
+	}
 	
-	@GetMapping("/workers")
-    public List<Worker>getAllWorkers() {
-        return workerService.getAllWorkers();
-    }
+	
+	
 }
  

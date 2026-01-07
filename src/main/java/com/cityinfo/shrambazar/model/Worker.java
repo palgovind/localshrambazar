@@ -3,6 +3,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import org.springframework.http.ResponseEntity;
 
 @Entity
 @Data
@@ -18,6 +19,7 @@ public class Worker{
 	public Worker(String name,String email,String phone,String department){
 		this.name=name;this.email=email;this.phone=phone;this.department=department;
 		}
+	
 	//Getters and setters
 	/*public Long getId(){return id;}
 	public void setId(Long id){this.id=id;}

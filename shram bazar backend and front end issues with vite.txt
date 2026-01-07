@@ -43,3 +43,4 @@ public ResponseEntity<String> postData(@RequestBody Map<String, Integer> payload
 
 ✔ Valid HTTP
 ✔ Works with JSON bodies
+3.I am thinking of printing the formdata in the postworker.jsx file itself which are stored as json in formdata.
