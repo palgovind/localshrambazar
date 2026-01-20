@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface WorkerRepository extends JpaRepository<Worker,Long>{
 
-    public  Worker getWorkerById(Integer id);
+    //public  Worker getWorkerById(Integer id);
    // public List <Worker> getAllWorker();
-   // public void deleteWorker(Long id);
+   //public void deleteWorker(Long id);
 
 }

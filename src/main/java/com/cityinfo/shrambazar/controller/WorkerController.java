@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -49,5 +50,21 @@ import java.util.Map;
     public List<Worker>getAllWorkers() {
         return workerService.getAllWorkers();
     }
+/*@DeleteMapping("worker/{id}")
+ public ResponseEntity<Void> deleteWorker(@PathVariable("id") Long id) {
+	 // delete logic 
+	 	 return ResponseEntity.noContent().build(); 
+	 }*/
+@DeleteMapping("worker/{id}")
+ public ResponseEntity<Void> deleteWorker(@PathVariable Long id) {
+	 // delete logic 
+	 workerRepository.deleteById(id);
+	 	 return ResponseEntity.noContent().build(); 
+	 }	
+	
+	
+	
+	
+	
 }
  
